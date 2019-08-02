@@ -1,0 +1,280 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', '-g', 'node@latest' ]
+2 info using npm@3.5.2
+3 info using node@v8.10.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readGlobalPackageData
+7 silly fetchPackageMetaData node@latest
+8 silly fetchNamedPackageData node
+9 silly mapToRegistry name node
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry uri https://registry.npmjs.org/node
+13 verbose request uri https://registry.npmjs.org/node
+14 verbose request no auth needed
+15 info attempt registry request try #1 at 5:32:18 am
+16 verbose request id b14da668be9c896a
+17 verbose etag W/"b45d6cfb3fe8c7347db349b3fdd23056"
+18 verbose lastModified Thu, 01 Aug 2019 00:11:32 GMT
+19 http request GET https://registry.npmjs.org/node
+20 http 304 https://registry.npmjs.org/node
+21 verbose headers { date: 'Fri, 02 Aug 2019 19:32:19 GMT',
+21 verbose headers   connection: 'keep-alive',
+21 verbose headers   'set-cookie':
+21 verbose headers    [ '__cfduid=ddf769df06016f241124038259873394b1564774338; expires=Sat, 01-Aug-20 19:32:18 GMT; path=/; domain=.npmjs.org; HttpOnly' ],
+21 verbose headers   'cf-cache-status': 'HIT',
+21 verbose headers   'cache-control': 'max-age=300',
+21 verbose headers   'cf-ray': '50027a22bbdb5d82-BNE',
+21 verbose headers   age: '410',
+21 verbose headers   etag: '"b45d6cfb3fe8c7347db349b3fdd23056"',
+21 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+21 verbose headers   'last-modified': 'Thu, 01 Aug 2019 00:11:32 GMT',
+21 verbose headers   vary: 'accept-encoding, accept',
+21 verbose headers   'x-amz-meta-rev': '485-200567d90c78c40b30c4e2548c93eba3',
+21 verbose headers   server: 'cloudflare' }
+22 silly get cb [ 304,
+22 silly get   { date: 'Fri, 02 Aug 2019 19:32:19 GMT',
+22 silly get     connection: 'keep-alive',
+22 silly get     'set-cookie':
+22 silly get      [ '__cfduid=ddf769df06016f241124038259873394b1564774338; expires=Sat, 01-Aug-20 19:32:18 GMT; path=/; domain=.npmjs.org; HttpOnly' ],
+22 silly get     'cf-cache-status': 'HIT',
+22 silly get     'cache-control': 'max-age=300',
+22 silly get     'cf-ray': '50027a22bbdb5d82-BNE',
+22 silly get     age: '410',
+22 silly get     etag: '"b45d6cfb3fe8c7347db349b3fdd23056"',
+22 silly get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+22 silly get     'last-modified': 'Thu, 01 Aug 2019 00:11:32 GMT',
+22 silly get     vary: 'accept-encoding, accept',
+22 silly get     'x-amz-meta-rev': '485-200567d90c78c40b30c4e2548c93eba3',
+22 silly get     server: 'cloudflare' } ]
+23 verbose etag https://registry.npmjs.org/node from cache
+24 verbose get saving node to /home/nathancollins/.npm/registry.npmjs.org/node/.cache.json
+25 silly install normalizeTree
+26 silly loadCurrentTree Finishing
+27 silly loadIdealTree Starting
+28 silly install loadIdealTree
+29 silly cloneCurrentTree Starting
+30 silly install cloneCurrentTreeToIdealTree
+31 silly cloneCurrentTree Finishing
+32 silly loadShrinkwrap Starting
+33 silly install loadShrinkwrap
+34 silly loadShrinkwrap Finishing
+35 silly loadAllDepsIntoIdealTree Starting
+36 silly install loadAllDepsIntoIdealTree
+37 silly resolveWithNewModule node@12.7.0 checking installable status
+38 silly cache add args [ 'node@latest', null ]
+39 verbose cache add spec node@latest
+40 silly cache add parsed spec Result {
+40 silly cache add   raw: 'node@latest',
+40 silly cache add   scope: null,
+40 silly cache add   name: 'node',
+40 silly cache add   rawSpec: 'latest',
+40 silly cache add   spec: 'latest',
+40 silly cache add   type: 'tag' }
+41 silly addNamed node@latest
+42 verbose addNamed "latest" is being treated as a dist-tag for node
+43 info addNameTag [ 'node', 'latest' ]
+44 silly mapToRegistry name node
+45 silly mapToRegistry using default registry
+46 silly mapToRegistry registry https://registry.npmjs.org/
+47 silly mapToRegistry uri https://registry.npmjs.org/node
+48 verbose addNameTag registry:https://registry.npmjs.org/node not in flight; fetching
+49 verbose get https://registry.npmjs.org/node not expired, no request
+50 silly addNameTag next cb for node with tag latest
+51 silly addNamed node@12.7.0
+52 verbose addNamed "12.7.0" is a plain semver version for node
+53 silly cache afterAdd node@12.7.0
+54 verbose afterAdd /home/nathancollins/.npm/node/12.7.0/package/package.json not in flight; writing
+55 verbose afterAdd /home/nathancollins/.npm/node/12.7.0/package/package.json written
+56 silly fetchNamedPackageData node-bin-setup
+57 silly mapToRegistry name node-bin-setup
+58 silly mapToRegistry using default registry
+59 silly mapToRegistry registry https://registry.npmjs.org/
+60 silly mapToRegistry uri https://registry.npmjs.org/node-bin-setup
+61 verbose request uri https://registry.npmjs.org/node-bin-setup
+62 verbose request no auth needed
+63 info attempt registry request try #1 at 5:32:19 am
+64 verbose etag W/"696d6ec470fda56a33885508a280edab"
+65 verbose lastModified Sun, 27 May 2018 09:55:03 GMT
+66 http request GET https://registry.npmjs.org/node-bin-setup
+67 http 304 https://registry.npmjs.org/node-bin-setup
+68 verbose headers { date: 'Fri, 02 Aug 2019 19:32:19 GMT',
+68 verbose headers   connection: 'keep-alive',
+68 verbose headers   'set-cookie':
+68 verbose headers    [ '__cfduid=d2ce8fab0617075ecda07a8a7bd2259c81564774339; expires=Sat, 01-Aug-20 19:32:19 GMT; path=/; domain=.npmjs.org; HttpOnly' ],
+68 verbose headers   'cf-cache-status': 'HIT',
+68 verbose headers   'cache-control': 'max-age=300',
+68 verbose headers   'cf-ray': '50027a236c225d82-BNE',
+68 verbose headers   age: '410',
+68 verbose headers   etag: '"696d6ec470fda56a33885508a280edab"',
+68 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+68 verbose headers   'last-modified': 'Sun, 27 May 2018 09:55:03 GMT',
+68 verbose headers   vary: 'accept-encoding, accept',
+68 verbose headers   server: 'cloudflare' }
+69 silly get cb [ 304,
+69 silly get   { date: 'Fri, 02 Aug 2019 19:32:19 GMT',
+69 silly get     connection: 'keep-alive',
+69 silly get     'set-cookie':
+69 silly get      [ '__cfduid=d2ce8fab0617075ecda07a8a7bd2259c81564774339; expires=Sat, 01-Aug-20 19:32:19 GMT; path=/; domain=.npmjs.org; HttpOnly' ],
+69 silly get     'cf-cache-status': 'HIT',
+69 silly get     'cache-control': 'max-age=300',
+69 silly get     'cf-ray': '50027a236c225d82-BNE',
+69 silly get     age: '410',
+69 silly get     etag: '"696d6ec470fda56a33885508a280edab"',
+69 silly get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+69 silly get     'last-modified': 'Sun, 27 May 2018 09:55:03 GMT',
+69 silly get     vary: 'accept-encoding, accept',
+69 silly get     server: 'cloudflare' } ]
+70 verbose etag https://registry.npmjs.org/node-bin-setup from cache
+71 verbose get saving node-bin-setup to /home/nathancollins/.npm/registry.npmjs.org/node-bin-setup/.cache.json
+72 silly resolveWithNewModule node-bin-setup@1.0.6 checking installable status
+73 silly cache add args [ 'node-bin-setup@^1.0.0', null ]
+74 verbose cache add spec node-bin-setup@^1.0.0
+75 silly cache add parsed spec Result {
+75 silly cache add   raw: 'node-bin-setup@^1.0.0',
+75 silly cache add   scope: null,
+75 silly cache add   name: 'node-bin-setup',
+75 silly cache add   rawSpec: '^1.0.0',
+75 silly cache add   spec: '>=1.0.0 <2.0.0',
+75 silly cache add   type: 'range' }
+76 silly addNamed node-bin-setup@>=1.0.0 <2.0.0
+77 verbose addNamed ">=1.0.0 <2.0.0" is a valid semver range for node-bin-setup
+78 silly addNameRange { name: 'node-bin-setup',
+78 silly addNameRange   range: '>=1.0.0 <2.0.0',
+78 silly addNameRange   hasData: false }
+79 silly mapToRegistry name node-bin-setup
+80 silly mapToRegistry using default registry
+81 silly mapToRegistry registry https://registry.npmjs.org/
+82 silly mapToRegistry uri https://registry.npmjs.org/node-bin-setup
+83 verbose addNameRange registry:https://registry.npmjs.org/node-bin-setup not in flight; fetching
+84 verbose get https://registry.npmjs.org/node-bin-setup not expired, no request
+85 silly addNameRange number 2 { name: 'node-bin-setup',
+85 silly addNameRange   range: '>=1.0.0 <2.0.0',
+85 silly addNameRange   hasData: true }
+86 silly addNameRange versions [ 'node-bin-setup',
+86 silly addNameRange   [ '1.0.0', '1.0.1', '1.0.2', '1.0.3', '1.0.4', '1.0.6' ] ]
+87 silly addNamed node-bin-setup@1.0.6
+88 verbose addNamed "1.0.6" is a plain semver version for node-bin-setup
+89 silly cache afterAdd node-bin-setup@1.0.6
+90 verbose afterAdd /home/nathancollins/.npm/node-bin-setup/1.0.6/package/package.json not in flight; writing
+91 verbose afterAdd /home/nathancollins/.npm/node-bin-setup/1.0.6/package/package.json written
+92 silly loadAllDepsIntoIdealTree Finishing
+93 silly idealTree:prePrune lib
+93 silly idealTree:prePrune └─┬ node@12.7.0
+93 silly idealTree:prePrune   └── node-bin-setup@1.0.6
+94 silly loadIdealTree Finishing
+95 silly currentTree lib
+96 silly idealTree lib
+96 silly idealTree └─┬ node@12.7.0
+96 silly idealTree   └── node-bin-setup@1.0.6
+97 silly generateActionsToTake Starting
+98 silly install generateActionsToTake
+99 silly generateActionsToTake Finishing
+100 silly diffTrees action count 2
+101 silly diffTrees add node-bin-setup@1.0.6
+102 silly diffTrees add node@12.7.0
+103 silly decomposeActions action count 16
+104 silly decomposeActions fetch node-bin-setup@1.0.6
+105 silly decomposeActions extract node-bin-setup@1.0.6
+106 silly decomposeActions test node-bin-setup@1.0.6
+107 silly decomposeActions preinstall node-bin-setup@1.0.6
+108 silly decomposeActions build node-bin-setup@1.0.6
+109 silly decomposeActions install node-bin-setup@1.0.6
+110 silly decomposeActions postinstall node-bin-setup@1.0.6
+111 silly decomposeActions finalize node-bin-setup@1.0.6
+112 silly decomposeActions fetch node@12.7.0
+113 silly decomposeActions extract node@12.7.0
+114 silly decomposeActions test node@12.7.0
+115 silly decomposeActions preinstall node@12.7.0
+116 silly decomposeActions build node@12.7.0
+117 silly decomposeActions install node@12.7.0
+118 silly decomposeActions postinstall node@12.7.0
+119 silly decomposeActions finalize node@12.7.0
+120 silly executeActions Starting
+121 silly install executeActions
+122 silly doSerial global-install 0
+123 silly doParallel fetch 2
+124 verbose lock using /home/nathancollins/.npm/_locks/staging-3a08f0df5026584d.lock for /usr/local/lib/node_modules/.staging
+125 silly doParallel extract 2
+126 silly extract node-bin-setup@1.0.6
+127 silly extract node@12.7.0
+128 verbose unbuild lib/node_modules/.staging/node-bin-setup-e96ff650
+129 verbose unbuild lib/node_modules/.staging/node-120c5c5f
+130 silly gentlyRm /usr/local/lib/node_modules/.staging/node-bin-setup-e96ff650 is being purged from base /usr/local
+131 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/.staging/node-bin-setup-e96ff650
+132 verbose tar unpack /home/nathancollins/.npm/node-bin-setup/1.0.6/package.tgz
+133 verbose tar unpacking to /usr/local/lib/node_modules/.staging/node-bin-setup-e96ff650
+134 silly gentlyRm /usr/local/lib/node_modules/.staging/node-bin-setup-e96ff650 is being purged
+135 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/.staging/node-bin-setup-e96ff650
+136 silly gentlyRm /usr/local/lib/node_modules/.staging/node-120c5c5f is being purged from base /usr/local
+137 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/.staging/node-120c5c5f
+138 silly gunzTarPerm modes [ '775', '664' ]
+139 verbose tar unpack /home/nathancollins/.npm/node/12.7.0/package.tgz
+140 verbose tar unpacking to /usr/local/lib/node_modules/.staging/node-120c5c5f
+141 silly gentlyRm /usr/local/lib/node_modules/.staging/node-120c5c5f is being purged
+142 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/.staging/node-120c5c5f
+143 silly gunzTarPerm modes [ '775', '664' ]
+144 silly gunzTarPerm extractEntry package.json
+145 silly gunzTarPerm modified mode [ 'package.json', 420, 436 ]
+146 silly gunzTarPerm extractEntry package.json
+147 silly gunzTarPerm modified mode [ 'package.json', 420, 436 ]
+148 silly gunzTarPerm extractEntry index.js
+149 silly gunzTarPerm modified mode [ 'index.js', 420, 436 ]
+150 silly gunzTarPerm extractEntry installArchSpecificPackage.js
+151 silly gunzTarPerm modified mode [ 'installArchSpecificPackage.js', 420, 436 ]
+152 silly gunzTarPerm extractEntry README.md
+153 silly gunzTarPerm modified mode [ 'README.md', 420, 436 ]
+154 silly gentlyRm /usr/local/lib/node_modules/.staging/node-bin-setup-e96ff650/node_modules is being purged
+155 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/.staging/node-bin-setup-e96ff650/node_modules
+156 silly gentlyRm /usr/local/lib/node_modules/.staging/node-120c5c5f/node_modules is being purged
+157 verbose gentlyRm don't care about contents; nuking /usr/local/lib/node_modules/.staging/node-120c5c5f/node_modules
+158 silly doParallel preinstall 2
+159 silly preinstall node-bin-setup@1.0.6 /usr/local/lib/node_modules/.staging/node-bin-setup-e96ff650
+160 info lifecycle node-bin-setup@1.0.6~preinstall: node-bin-setup@1.0.6
+161 silly preinstall node@12.7.0 /usr/local/lib/node_modules/.staging/node-120c5c5f
+162 info lifecycle node@12.7.0~preinstall: node@12.7.0
+163 silly lifecycle node-bin-setup@1.0.6~preinstall: no script for preinstall, continuing
+164 verbose lifecycle node@12.7.0~preinstall: unsafe-perm in lifecycle true
+165 verbose lifecycle node@12.7.0~preinstall: PATH: /usr/share/npm/bin/node-gyp-bin:/usr/local/lib/node_modules/.staging/node-120c5c5f/node_modules/.bin:/usr/local/lib/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/nathancollins/.dotnet/tools:/home/nathancollins/010editor:/home/nathancollins/010editor:/home/nathancollins/010editor
+166 verbose lifecycle node@12.7.0~preinstall: CWD: /usr/local/lib/node_modules/.staging/node-120c5c5f
+167 silly lifecycle node@12.7.0~preinstall: Args: [ '-c', 'node installArchSpecificPackage' ]
+168 silly lifecycle node@12.7.0~preinstall: Returned: code: 1  signal: null
+169 info lifecycle node@12.7.0~preinstall: Failed to exec preinstall script
+170 verbose unlock done using /home/nathancollins/.npm/_locks/staging-3a08f0df5026584d.lock for /usr/local/lib/node_modules/.staging
+171 silly rollbackFailedOptional Starting
+172 silly rollbackFailedOptional Finishing
+173 silly runTopLevelLifecycles Starting
+174 silly runTopLevelLifecycles Finishing
+175 silly install printInstalled
+176 verbose stack Error: node@12.7.0 preinstall: `node installArchSpecificPackage`
+176 verbose stack Exit status 1
+176 verbose stack     at EventEmitter.<anonymous> (/usr/share/npm/lib/utils/lifecycle.js:232:16)
+176 verbose stack     at emitTwo (events.js:126:13)
+176 verbose stack     at EventEmitter.emit (events.js:214:7)
+176 verbose stack     at ChildProcess.<anonymous> (/usr/share/npm/lib/utils/spawn.js:24:14)
+176 verbose stack     at emitTwo (events.js:126:13)
+176 verbose stack     at ChildProcess.emit (events.js:214:7)
+176 verbose stack     at maybeClose (internal/child_process.js:925:16)
+176 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
+177 verbose pkgid node@12.7.0
+178 verbose cwd /home/nathancollins/portfolio/search-users
+179 error Linux 4.15.0-54-generic
+180 error argv "/usr/bin/node" "/usr/bin/npm" "install" "-g" "node@latest"
+181 error node v8.10.0
+182 error npm  v3.5.2
+183 error code ELIFECYCLE
+184 error node@12.7.0 preinstall: `node installArchSpecificPackage`
+184 error Exit status 1
+185 error Failed at the node@12.7.0 preinstall script 'node installArchSpecificPackage'.
+185 error Make sure you have the latest version of node.js and npm installed.
+185 error If you do, this is most likely a problem with the node package,
+185 error not with npm itself.
+185 error Tell the author that this fails on your system:
+185 error     node installArchSpecificPackage
+185 error You can get information on how to open an issue for this project with:
+185 error     npm bugs node
+185 error Or if that isn't available, you can get their info via:
+185 error     npm owner ls node
+185 error There is likely additional logging output above.
+186 verbose exit [ 1, true ]

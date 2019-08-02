@@ -1,0 +1,33 @@
+{
+  "name": "search-users",
+  "scripts": {
+    "yarn": "yarn",
+    "start": "polymer serve",
+    "build": "polymer build",
+    "lint": "polymer lint",
+    "test": "polymer test",
+    "test:integration": "polymer build # test that psk builds without error with the CLI"
+  },
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0",
+    "eslint": "^6.1.0"
+  },
+  "devDependencies": {
+    "@polymer/test-fixture": "^4.0.2",
+    "babel-eslint": "^8.2.6",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "eslint": "^5.16.0",
+    "eslint-config-google": "^0.10.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-html": "^5.0.1",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "karma-sauce-launcher": "^2.0.2",
+    "selenium-standalone": "^6.16.0",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "wct-mocha": "^1.0.0"
+  }
+}

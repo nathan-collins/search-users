@@ -1,0 +1,42 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.minimap.maxColumn": 80,
+    "editor.tabSize": 2,
+    "files.insertFinalNewline": true,
+    "files.autoSave": "onFocusChange",
+    "merge-conflict.autoNavigateNextConflict.enabled": true,
+    "editor.renderWhitespace": "all",
+    "editor.renderControlCharacters": false,
+    "editor.formatOnSave": true,
+    "breadcrumbs.enabled": true,
+    "eslint.options": {
+      "configFile": ".eslintrc"
+    },
+    "eslint.autoFixOnSave": true,
+    "prettier.eslintIntegration": true,
+    "prettier.trailingComma": "es5",
+    "prettier.singleQuote": true,
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false,
+    "editor.matchBrackets": false,
+    "eslint.packageManager": "yarn",
+  },
+  "extensions": {
+    "recommendations": [
+      "bierner.lit-html",
+      "bysabi.prettier-vscode-standard",
+      "dbaeumer.vscode-eslint",
+      "donjayamanne.githistory",
+      "drknoxy.eslint-disable-snippets",
+      "eamodio.gitlens",
+      "jonwolfe.language-polymer",
+      "justinribeiro.polymer2snippets",
+      "polymer.polymer-ide",
+      "waderyan.gitblame"
+    ]
+  }
+}
