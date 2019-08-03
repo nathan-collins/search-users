@@ -13,6 +13,7 @@
     <script src="../../node_modules/@polymer/test-fixture/test-fixture.js"></script>
     <script src="../../node_modules/mocha/mocha.js"></script>
     <script src="../../node_modules/chai/chai.js"></script>
+    <script src="../../node_modules/sinon/pkg/sinon.js"></script>
     <script src="../../node_modules/wct-mocha/wct-mocha.js"></script>
 
     <script
@@ -27,14 +28,40 @@
       </template>
     </test-fixture>
 
-    <script>
+    <script type="module">
+      import { tap } from '@polymer/iron-test-helpers/mock-interactions.js';
       suite('search-users-app', function() {
-        test('the search field exists', function() {
+        let searchUser;
+
+        setup(() => {
+          searchUser = fixture('SearchUserFixture');
+        });
+
+        test('the search field exists', () => {
           // Create a test fixture
-          var searchUser = fixture('SearchUserFixture');
-          var elementShadowRoot = searchUser.shadowRoot;
-          var elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello search-users-app!');
+          const elementShadowRoot = searchUser.shadowRoot;
+          const searchField = elementShadowRoot.querySelector('#searchField');
+          expect(searchField).to.exist;
+        });
+
+        test('submit button exists', () => {
+          const elementShadowRoot = searchUser.shadowRoot;
+          const submitButton = elementShadowRoot.querySelector('#submitButton');
+          expect(submitButton).to.exist;
+        });
+
+        test('search button has been clicked', done => {
+          searchUser.searchUsers = sinon.spy();
+
+          flush(() => {
+            const submitButton = searchUser.shadowRoot.querySelector(
+              '#submitButton'
+            );
+            tap(submitButton);
+            assert(searchUser.searchUsers.calledOnce);
+
+            done();
+          });
         });
       });
     </script>

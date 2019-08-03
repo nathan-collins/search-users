@@ -31,7 +31,8 @@ class SearchUsersApp extends PolymerElement {
           padding: 0;
         }
       </style>
-      <paper-input id="searchField" label="Search" placeholder="Search User"></paper-input><paper-button on-click="searchUsers">Search</paper-button>
+      <paper-input id="searchField" label="Search" placeholder="Search User"></paper-input>
+      <paper-button id="submitButton" on-click="searchUsers">Search</paper-button>
     `;
   }
 
