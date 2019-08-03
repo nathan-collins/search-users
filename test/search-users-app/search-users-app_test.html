@@ -1,8 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
 
     <title>search-users-app test</title>
 
@@ -12,45 +15,28 @@
     <script src="../../node_modules/chai/chai.js"></script>
     <script src="../../node_modules/wct-mocha/wct-mocha.js"></script>
 
-    <script type="module" src="../../src/search-users-app/search-users-app.js"></script>
+    <script
+      type="module"
+      src="../../src/search-users-app/search-users-app.js"
+    ></script>
   </head>
   <body>
-
-    <test-fixture id="BasicTestFixture">
+    <test-fixture id="SearchUserFixture">
       <template>
         <search-users-app></search-users-app>
       </template>
     </test-fixture>
 
-    <test-fixture id="ChangedPropertyTestFixture">
-      <template>
-        <search-users-app prop1="new-prop1"></search-users-app>
-      </template>
-    </test-fixture>
-
     <script>
       suite('search-users-app', function() {
-
-        test('instantiating the element with default properties works', function() {
-          var element = fixture('BasicTestFixture');
-          assert.equal(element.prop1, 'search-users-app');
-          var elementShadowRoot = element.shadowRoot;
+        test('the search field exists', function() {
+          // Create a test fixture
+          var searchUser = fixture('SearchUserFixture');
+          var elementShadowRoot = searchUser.shadowRoot;
           var elementHeader = elementShadowRoot.querySelector('h2');
           assert.equal(elementHeader.innerHTML, 'Hello search-users-app!');
         });
-
-        test('setting a property on the element works', function() {
-          // Create a test fixture
-          var element = fixture('ChangedPropertyTestFixture');
-          assert.equal(element.prop1, 'new-prop1');
-          var elementShadowRoot = element.shadowRoot;
-          var elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
-        });
-
       });
     </script>
-
-
   </body>
 </html>
