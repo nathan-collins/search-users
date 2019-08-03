@@ -1,4 +1,5 @@
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { fetch } from 'whatwg-fetch';
 
 import '@polymer/paper-input/paper-input.js';
 import '@polymer/paper-button/paper-button.js';
@@ -38,9 +39,9 @@ class SearchUsersApp extends PolymerElement {
 
   static get properties() {
     return {
-      prop1: {
-        type: String,
-        value: 'search-users-app',
+      users: {
+        type: Array,
+        observer: 'usersChanged',
       },
     };
   }
@@ -48,7 +49,22 @@ class SearchUsersApp extends PolymerElement {
   /**
    * @param {Event} event Search users in the github api
    */
-  searchUsers(event) {}
+  searchUsers(event) {
+    fetch('https://api.github.com/users')
+      .then(response => {
+        return response.text();
+      })
+      .then(body => {
+        this.set('users', body);
+      });
+  }
+
+  /**
+   * @param {Array} users A list of users from the api
+   */
+  usersChanged(users) {
+    console.log('Users:', users);
+  }
 }
 
 window.customElements.define('search-users-app', SearchUsersApp);
