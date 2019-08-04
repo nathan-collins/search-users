@@ -63,6 +63,12 @@
             done();
           });
         });
+
+        test('users list should exist', done => {
+          const elementShadowRoot = searchUser.shadowRoot;
+          const submitButton = elementShadowRoot.querySelector('#usersList');
+          expect(submitButton).to.exist;
+        });
       });
     </script>
   </body>

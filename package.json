@@ -9,12 +9,16 @@
     "test:integration": "polymer build # test that psk builds without error with the CLI"
   },
   "dependencies": {
+    "@polymer/iron-list": "^3.0.2",
+    "@polymer/iron-scroll-threshold": "^3.0.1",
+    "@polymer/iron-test-helpers": "^3.0.0-pre.25",
     "@polymer/paper-button": "^3.0.1",
+    "@polymer/paper-card": "^3.0.1",
     "@polymer/paper-input": "^3.0.2",
+    "@polymer/paper-radio-group": "^3.0.1",
     "@polymer/polymer": "^3.0.0",
     "eslint": "^6.1.0",
-    "whatwg-fetch": "^3.0.0",
-    "@polymer/iron-test-helpers": "^3.0.0-pre.25"
+    "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
     "@polymer/test-fixture": "^4.0.2",
