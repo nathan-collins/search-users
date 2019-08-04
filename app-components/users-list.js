@@ -62,7 +62,7 @@ class UsersList extends PolymerElement {
    */
   usersListChanged(usersList) {
     usersList.forEach((user, index) => {
-      if (index <= this.previousTotal) {
+      if (index >= this.previousTotal) {
         this.set('followers', this.getFollowersNumber(user.followers_url));
       }
     });
