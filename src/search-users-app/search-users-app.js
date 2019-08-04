@@ -100,7 +100,7 @@ class SearchUsersApp extends listMixin(PolymerElement) {
         on-lower-threshold="_loadMoreUsers" 
         lower-threshold="[[startPosition]]"
         scroll-target="document">
-        <p id="results">Total Results: [[_computeTotalResults(usersList)]]</p> 
+        <p id="results">Total Results: [[_computeTotalResults(usersList, totalResults)]]</p> 
         <div id="userContainer">
           <users-list users-list="[[usersList]]"></users-list>
         </div>
@@ -169,8 +169,13 @@ class SearchUsersApp extends listMixin(PolymerElement) {
    *
    * @param {Array} usersList Users list
    */
-  _computeTotalResults(usersList) {
-    return `${usersList.length} users visible`;
+  _computeTotalResults(usersList, totalResults) {
+    let suffix = '';
+    if (totalResults) {
+      suffix = `of ${totalResults}`;
+    }
+
+    return `${usersList.length} users visible ${suffix}`;
   }
 
   /**
@@ -248,6 +253,7 @@ class SearchUsersApp extends listMixin(PolymerElement) {
             users.push(user);
           });
           this.set('lastUserId', body.items.slice(-1)[0].id);
+          this.set('totalResults', body.total_count);
         } else {
           body.forEach(user => {
             users.push(user);
