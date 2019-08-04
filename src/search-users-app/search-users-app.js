@@ -25,6 +25,9 @@ const API = {
  * @polymer
  */
 class SearchUsersApp extends listMixin(PolymerElement) {
+  /**
+   * @return {HTML} Markup values
+   */
   static get template() {
     return html`
       <style>
@@ -100,7 +103,7 @@ class SearchUsersApp extends listMixin(PolymerElement) {
         on-lower-threshold="_loadMoreUsers" 
         lower-threshold="[[startPosition]]"
         scroll-target="document">
-        <p id="results">Total Results: [[_computeTotalResults(usersList)]]</p> 
+        <p id="results">Total Results: [[_computeTotalResults(usersList, totalResults)]]</p> 
         <div id="userContainer">
           <users-list users-list="[[usersList]]"></users-list>
         </div>
@@ -108,6 +111,9 @@ class SearchUsersApp extends listMixin(PolymerElement) {
     `;
   }
 
+  /**
+   * @return {Object} A list of properties
+   */
   static get properties() {
     return {
       lastUserId: {
@@ -156,10 +162,15 @@ class SearchUsersApp extends listMixin(PolymerElement) {
     };
   }
 
+  /**
+   * @return {Array} Complex observers
+   */
   static get observers() {
     return ['usersChanged(users.*)'];
   }
 
+  /**
+   */
   connectedCallback() {
     super.connectedCallback();
     this.checkRateLimit(API);
@@ -169,8 +180,13 @@ class SearchUsersApp extends listMixin(PolymerElement) {
    *
    * @param {Array} usersList Users list
    */
-  _computeTotalResults(usersList) {
-    return `${usersList.length} users visible`;
+  _computeTotalResults(usersList, totalResults) {
+    let suffix = '';
+    if (totalResults) {
+      suffix = `of ${totalResults}`;
+    }
+
+    return `${usersList.length} users visible ${suffix}`;
   }
 
   /**
@@ -248,6 +264,7 @@ class SearchUsersApp extends listMixin(PolymerElement) {
             users.push(user);
           });
           this.set('lastUserId', body.items.slice(-1)[0].id);
+          this.set('totalResults', body.total_count);
         } else {
           body.forEach(user => {
             users.push(user);
@@ -256,14 +273,6 @@ class SearchUsersApp extends listMixin(PolymerElement) {
         }
         this.push('users', users);
       });
-  }
-
-  getFollowersNumber(followersPath, index) {
-    fetch(`${followersPath}`).then(body => {
-      this.set('followers', body.length);
-    });
-
-    this.set('followers');
   }
 
   /**
