@@ -28,7 +28,6 @@ const ListMixin = superClass =>
           return response.json();
         })
         .then(body => {
-          console.log(body);
           if (body.rate.remaining === 0) {
             const date = new Date(body.rate.reset * 1000);
             const hours = date.getHours();

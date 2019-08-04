@@ -16,7 +16,8 @@ import '../../app-components/users-list.js';
 const USERLIMIT = 30;
 const PATH = 'https://api.github.com';
 const API = {
-  USER: `${PATH}/users`,
+  USER: `${PATH}/search/users`,
+  SEARCH_USER: `${PATH}/users`,
   RATELIMIT: `${PATH}/rate_limit`,
 };
 
@@ -50,6 +51,11 @@ class SearchUsersApp extends listMixin(PolymerElement) {
           padding: 0;
         }
 
+        paper-radio-group {
+          display: flex;
+          flex-direction: column;
+        }
+
         paper-input-container {
           padding: 0;
         }
@@ -78,10 +84,9 @@ class SearchUsersApp extends listMixin(PolymerElement) {
           value="{{searchTerm}}">
         </paper-input>
         <paper-radio-group selected="{{sortBy}}" allow-empty-selection attr-for-selected="name">
-          <paper-radio-button name="stars">Stars</paper-radio-button>
-          <paper-radio-button name="forks">Forks</paper-radio-button>
-          <paper-radio-button name="help-wanted-issues">Help Wanted</paper-radio-button>
-          <paper-radio-button name="updated">Recently Updated</paper-radio-button>
+          <paper-radio-button name="followers">Followers</paper-radio-button>
+          <paper-radio-button name="repositories">Repositories</paper-radio-button>
+          <paper-radio-button name="joined">Joined</paper-radio-button>
         </paper-radio-group>
         <paper-button id="submitButton" on-click="searchUsers">Search</paper-button>
       </div>
@@ -102,7 +107,6 @@ class SearchUsersApp extends listMixin(PolymerElement) {
     return {
       lastUserId: {
         type: Number,
-        value: 1,
       },
 
       listPosition: {
@@ -119,10 +123,16 @@ class SearchUsersApp extends listMixin(PolymerElement) {
 
       searchTerm: {
         type: String,
+        observer: 'searchTermChanged',
       },
 
       sortBy: {
         type: String,
+      },
+
+      startPosition: {
+        type: Number,
+        value: 0,
       },
 
       users: {
@@ -151,16 +161,16 @@ class SearchUsersApp extends listMixin(PolymerElement) {
   }
 
   /**
-   * @param {String} repo Repo address
+   *
+   * @param {String} oldValue old search term
+   * @param {String} newValue new search term
    */
-  getRepositories(repo) {
-    fetch(`${repo}`)
-      .then(response => {
-        return response.json();
-      })
-      .then(body => {
-        this.set('startPosition', body.length);
-      });
+  searchTermChanged(oldValue, newValue) {
+    if (!oldValue || !newValue) return;
+    this.set('changedSearchTerm', false);
+    if (oldValue.toLowerCase() !== newValue.toLowerCase()) {
+      this.set('changedSearchTerm', true);
+    }
   }
 
   /**
@@ -180,12 +190,18 @@ class SearchUsersApp extends listMixin(PolymerElement) {
    */
   buildParameters() {
     const searchTerm = this.searchTerm.split(' ').join('+');
+
     let params = {};
-    params.q = searchTerm;
+    if (searchTerm !== '') {
+      params.q = searchTerm;
+    }
     if (this.sortBy) {
       params.sort = this.sortBy;
     }
-    params.since = this.lastUserId;
+    if (this.lastUserId) {
+      params.since = this.lastUserId;
+    }
+
     return params;
   }
 
@@ -194,23 +210,38 @@ class SearchUsersApp extends listMixin(PolymerElement) {
    */
   searchUsers() {
     if (this.isRateLimited) return;
+    if (this.changedSearchTerm) {
+      this.set('users', []);
+    }
 
     const params = this.buildParameters();
+    const apiPath = Object.keys(params).includes('q')
+      ? API.USER
+      : API.SEARCH_USER;
+
     const query = Object.keys(params)
       .map(key => key + '=' + params[key])
       .join('&');
 
-    fetch(`${API.USER}?${query}`)
+    fetch(`${apiPath}?${query}`)
       .then(response => {
         return response.json();
       })
       .then(body => {
         let users = [];
-        body.forEach(user => {
-          users.push(user);
-        });
+        const keys = Object.keys(body);
+        if (keys.includes('items')) {
+          body.items.forEach(user => {
+            users.push(user);
+          });
+          this.set('lastUserId', body.items.slice(-1)[0].id);
+        } else {
+          body.forEach(user => {
+            users.push(user);
+          });
+          this.set('lastUserId', body.slice(-1)[0].id);
+        }
         this.push('users', users);
-        this.set('lastUserId', body.slice(-1)[0].id);
       });
   }
 
@@ -221,7 +252,6 @@ class SearchUsersApp extends listMixin(PolymerElement) {
     if (!users || !users.base || users.length === 0) return;
     // So we save hitting this function to many times we flatten the array
     const flattenUsers = Array.prototype.concat.apply([], users.base);
-
     const usersList = flattenUsers.slice(this.startPosition, this.lastPosition);
 
     let previousUserIds;
@@ -231,13 +261,14 @@ class SearchUsersApp extends listMixin(PolymerElement) {
       });
     }
 
-    const newUsers = usersList.map(user => {
+    const newUsers = flattenUsers.map(user => {
       if (!previousUserIds.includes(user.id)) return user;
     });
 
     if (newUsers.length > 0) {
-      this.set('lastPosition', usersList.length);
-      this.set('usersList', usersList);
+      this.set('startPosition', usersList.length);
+      this.set('lastPosition', flattenUsers.length);
+      this.set('usersList', flattenUsers);
     }
   }
 }
