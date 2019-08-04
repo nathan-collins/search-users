@@ -25,6 +25,9 @@ const API = {
  * @polymer
  */
 class SearchUsersApp extends listMixin(PolymerElement) {
+  /**
+   * @return {HTML} Markup values
+   */
   static get template() {
     return html`
       <style>
@@ -108,6 +111,9 @@ class SearchUsersApp extends listMixin(PolymerElement) {
     `;
   }
 
+  /**
+   * @return {Object} A list of properties
+   */
   static get properties() {
     return {
       lastUserId: {
@@ -156,10 +162,15 @@ class SearchUsersApp extends listMixin(PolymerElement) {
     };
   }
 
+  /**
+   * @return {Array} Complex observers
+   */
   static get observers() {
     return ['usersChanged(users.*)'];
   }
 
+  /**
+   */
   connectedCallback() {
     super.connectedCallback();
     this.checkRateLimit(API);
@@ -262,14 +273,6 @@ class SearchUsersApp extends listMixin(PolymerElement) {
         }
         this.push('users', users);
       });
-  }
-
-  getFollowersNumber(followersPath, index) {
-    fetch(`${followersPath}`).then(body => {
-      this.set('followers', body.length);
-    });
-
-    this.set('followers');
   }
 
   /**

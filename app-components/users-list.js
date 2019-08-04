@@ -9,6 +9,8 @@ import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
  *
  */
 class UsersList extends PolymerElement {
+  /**
+   */
   static get properties() {
     return {
       previousTotal: {
@@ -23,6 +25,8 @@ class UsersList extends PolymerElement {
     };
   }
 
+  /**
+   */
   static get template() {
     return html`
       <style>
@@ -63,7 +67,11 @@ class UsersList extends PolymerElement {
   usersListChanged(usersList) {
     usersList.forEach((user, index) => {
       if (index >= this.previousTotal) {
-        this.set('followers', this.getFollowersNumber(user.followers_url));
+        this.set(
+          `usersList.${index}.followers`,
+          this.getFollowersNumber(user.followers_url)
+        );
+        this.notifyPath(`usersList.${index}.followers`);
       }
     });
     this.set('previousTotal', usersList.length);
@@ -74,9 +82,14 @@ class UsersList extends PolymerElement {
    * @param {String} followersPath Path for the followers
    */
   getFollowersNumber(followersPath) {
-    return fetch(`${followersPath}`).then(body => {
-      return body.length;
-    });
+    return fetch(`${followersPath}`)
+      .then(response => {
+        return response.json();
+      })
+      .then(body => {
+        console.log(body);
+        return body.length;
+      });
   }
 }
 
