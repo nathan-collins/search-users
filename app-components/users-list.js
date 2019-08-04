@@ -11,8 +11,14 @@ import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 class UsersList extends PolymerElement {
   static get properties() {
     return {
+      previousTotal: {
+        type: Number,
+        value: 0,
+      },
+
       usersList: {
         type: Array,
+        observer: 'usersListChanged',
       },
     };
   }
@@ -39,7 +45,8 @@ class UsersList extends PolymerElement {
           <template>
             <paper-card image="[[user.avatar_url]]">
               <div class="card-content">
-                [[user.login]]
+                <a href="[[user.html_url]]" target="_blank">[[user.login]]</a>
+                <span>[[followers]]</span>
               </div>
               <div class="card-actions">
 
@@ -52,20 +59,24 @@ class UsersList extends PolymerElement {
   }
 
   /**
-   * Instance of the element is created/upgraded. Use: initializing state,
-   * set up event listeners, create shadow dom.
-   * @constructor
    */
-  constructor() {
-    super();
+  usersListChanged(usersList) {
+    usersList.forEach((user, index) => {
+      if (index >= this.previousTotal) {
+        this.set('followers', this.getFollowersNumber(user.followers_url));
+      }
+    });
+    this.set('previousTotal', usersList.length);
   }
 
   /**
-   * Use for one-time configuration of your component after local
-   * DOM is initialized.
+   *
+   * @param {String} followersPath Path for the followers
    */
-  ready() {
-    super.ready();
+  getFollowersNumber(followersPath) {
+    return fetch(`${followersPath}`).then(body => {
+      return body.length;
+    });
   }
 }
 

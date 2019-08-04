@@ -13,7 +13,6 @@ import '@polymer/iron-list/iron-list.js';
 
 import '../../app-components/users-list.js';
 
-const USERLIMIT = 30;
 const PATH = 'https://api.github.com';
 const API = {
   USER: `${PATH}/search/users`,
@@ -65,6 +64,11 @@ class SearchUsersApp extends listMixin(PolymerElement) {
           justify-content: center;
         }
 
+        #results {
+          display: flex;
+          justify-content: center;
+        }
+
         .message {
           display: flex;
           justify-content: center;
@@ -96,6 +100,7 @@ class SearchUsersApp extends listMixin(PolymerElement) {
         on-lower-threshold="_loadMoreUsers" 
         lower-threshold="[[startPosition]]"
         scroll-target="document">
+        <p id="results">Total Results: [[_computeTotalResults(usersList)]]</p> 
         <div id="userContainer">
           <users-list users-list="[[usersList]]"></users-list>
         </div>
@@ -158,6 +163,14 @@ class SearchUsersApp extends listMixin(PolymerElement) {
   connectedCallback() {
     super.connectedCallback();
     this.checkRateLimit(API);
+  }
+
+  /**
+   *
+   * @param {Array} usersList Users list
+   */
+  _computeTotalResults(usersList) {
+    return `${usersList.length} users visible`;
   }
 
   /**
@@ -243,6 +256,14 @@ class SearchUsersApp extends listMixin(PolymerElement) {
         }
         this.push('users', users);
       });
+  }
+
+  getFollowersNumber(followersPath, index) {
+    fetch(`${followersPath}`).then(body => {
+      this.set('followers', body.length);
+    });
+
+    this.set('followers');
   }
 
   /**
